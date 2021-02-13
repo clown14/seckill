@@ -1,41 +1,41 @@
 spring:
-  # thymelaefÅäÖÃ
+  # thymelaefé…ç½®
   thymeleaf:
-    # ¹Ø±Õ»º´æ
+    # å…³é—­ç¼“å­˜
     cache: false
-  # Êı¾İÔ´ÅäÖÃ
+  # æ•°æ®æºé…ç½®
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seckill?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: 960214
     hikari:
-      #Á¬½Ó³ØÃû
+      #è¿æ¥æ± å
       pool-name: DateHikariCP
-      # ×îĞ¡¿ÕÏĞÁ¬½Ó³ö
+      # æœ€å°ç©ºé—²è¿æ¥å‡º
       minimum-idle: 5
-      # ¿ÕÏĞÁ¬½Ó´æ»î×î´óÊ±¼ä£¬Ä¬ÈÏ600000(10·ÖÖÓ)
+      # ç©ºé—²è¿æ¥å­˜æ´»æœ€å¤§æ—¶é—´ï¼Œé»˜è®¤600000(10åˆ†é’Ÿ)
       idle-timeout: 600000
-      #×î´óÁ¬½ÓÊı£¬Ä¬ÈÏ10
+      #æœ€å¤§è¿æ¥æ•°ï¼Œé»˜è®¤10
       maximum-pool-size: 10
-      # ´ÓÁ¬½Ó³Ø·µ»ØµÄÁ¬½Ó×Ô¶¯Ìá½»
+      # ä»è¿æ¥æ± è¿”å›çš„è¿æ¥è‡ªåŠ¨æäº¤
       auto-commit: true
-      # Á¬½Ó×î´ó´æ»îÊ±¼ä£¬0±íÊ¾ÓÀ¾Ã´æ»î£¬Ä¬ÈÏ1800000(30·ÖÖÓ)
+      # è¿æ¥æœ€å¤§å­˜æ´»æ—¶é—´ï¼Œ0è¡¨ç¤ºæ°¸ä¹…å­˜æ´»ï¼Œé»˜è®¤1800000(30åˆ†é’Ÿ)
       max-lifetime: 1800000
-      # Á¬½Ó³¬Ê±Ê±¼ä£¬Ä¬ÈÏ30000(30Ãë)
+      # è¿æ¥è¶…æ—¶æ—¶é—´ï¼Œé»˜è®¤30000(30ç§’)
       connection-timeout: 30000
-      # ²âÊÔÁ¬½ÓÊÇ·ñ¿ÉÓÃµÄ²éÑ¯Óï¾ä
+      # æµ‹è¯•è¿æ¥æ˜¯å¦å¯ç”¨çš„æŸ¥è¯¢è¯­å¥
       connection-test-query: SELECT 1
 
-#Mybatis-plusÅäÖÃ
+#Mybatis-plusé…ç½®
 mybatis-plus:
-  # ÅäÖÃMapper.xmlÓ³ÉäÎÄ¼ş
+  # é…ç½®Mapper.xmlæ˜ å°„æ–‡ä»¶
   mapper-locations: classpath*:/mapper/*Mapper.xml
-  # ÅäÖÃMyBatisÊı¾İ·µ»ØÀàĞÍ±ğÃû(Ä¬ÈÏ±ğÃûÊÇÀàÃû)
+  # é…ç½®MyBatisæ•°æ®è¿”å›ç±»å‹åˆ«å(é»˜è®¤åˆ«åæ˜¯ç±»å)
   type-aliases-package: com.xxxx.seckill.pojo
 
 
-# MyBatis SQL´òÓ¡(·½·¨½Ó¿ÚËùÔÚµÄ°ü£¬²»ÊÇMapper.xmlËùÔÚµÄ°ü)
+# MyBatis SQLæ‰“å°(æ–¹æ³•æ¥å£æ‰€åœ¨çš„åŒ…ï¼Œä¸æ˜¯Mapper.xmlæ‰€åœ¨çš„åŒ…)
 logging:
   level:
     com.xxxx.seckill.mapper: debug

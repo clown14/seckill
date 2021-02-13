@@ -28,7 +28,7 @@ public class RespBean {
 	 * 功能描述: 成功返回结果
 	 */
 	public static com.xxxx.seckill.vo.RespBean success(Object obj){
-		return new com.xxxx.seckill.vo.RespBean(RespBeanEnum.SUCCESS.getCode(), com.xxxx.seckill.vo.RespBean.success().getMessage(),obj);
+		return new com.xxxx.seckill.vo.RespBean(RespBeanEnum.SUCCESS.getCode(), RespBean.success().getMessage(),obj);
 	}
 
 
