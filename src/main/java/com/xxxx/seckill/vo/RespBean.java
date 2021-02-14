@@ -20,31 +20,31 @@ public class RespBean {
 	/**
 	 * 功能描述: 成功返回结果
 	 */
-	public static com.xxxx.seckill.vo.RespBean success(){
-		return new com.xxxx.seckill.vo.RespBean(RespBeanEnum.SUCCESS.getCode(),RespBeanEnum.SUCCESS.getMessage(),null);
+	public static RespBean success(){
+		return new RespBean(RespBeanEnum.SUCCESS.getCode(),RespBeanEnum.SUCCESS.getMessage(),null);
 	}
 
 	/**
 	 * 功能描述: 成功返回结果
 	 */
-	public static com.xxxx.seckill.vo.RespBean success(Object obj){
-		return new com.xxxx.seckill.vo.RespBean(RespBeanEnum.SUCCESS.getCode(), RespBean.success().getMessage(),obj);
+	public static RespBean success(Object obj){
+		return new RespBean(RespBeanEnum.SUCCESS.getCode(), RespBean.success().getMessage(),obj);
 	}
 
 
 	/**
 	 * 功能描述: 失败返回结果
 	 */
-	public static com.xxxx.seckill.vo.RespBean error(RespBeanEnum respBeanEnum){
-		return new com.xxxx.seckill.vo.RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),null);
+	public static RespBean error(RespBeanEnum respBeanEnum){
+		return new RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),null);
 	}
 
 
 	/**
 	 * 功能描述: 失败返回结果
 	 */
-	public static com.xxxx.seckill.vo.RespBean error(RespBeanEnum respBeanEnum, Object obj){
-		return new com.xxxx.seckill.vo.RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),obj);
+	public static RespBean error(RespBeanEnum respBeanEnum, Object obj){
+		return new RespBean(respBeanEnum.getCode(),respBeanEnum.getMessage(),obj);
 	}
 
 }
