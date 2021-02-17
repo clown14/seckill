@@ -30,16 +30,15 @@ public class GoodsController {
      * 功能描述: 跳转商品列表页
      */
     @RequestMapping(value = "/toList")
-    public String toList(HttpServletRequest request, HttpServletResponse response,
-                         Model model, @CookieValue("userTicket") String ticket) {
-        if (StringUtils.isEmpty(ticket)) {
-            return "login";
-        }
-        // User user = (User) session.getAttribute(ticket);
-        User user = userService.getUserByCookie(ticket, request, response);
-        if (user == null) {
-            return "login";
-        }
+    public String toList(Model model, User user) {
+//        if (StringUtils.isEmpty(ticket)) {
+//            return "login";
+//        }
+//        // User user = (User) session.getAttribute(ticket);
+//        User user = userService.getUserByCookie(ticket, request, response);
+//        if (user == null) {
+//            return "login";
+//        }
         model.addAttribute("user", user);
         return "goodsList";
     }
