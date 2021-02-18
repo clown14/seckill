@@ -3,16 +3,14 @@ package com.xxxx.seckill.controller;
 import com.xxxx.seckill.pojo.User;
 import com.xxxx.seckill.service.IGoodsService;
 import com.xxxx.seckill.service.IUserService;
+import com.xxxx.seckill.vo.GoodsVo;
+import com.xxxx.seckill.vo.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @program: seckill-demo
@@ -46,6 +44,21 @@ public class GoodsController {
         model.addAttribute("user", user);
         model.addAttribute("goodsList", goodsService.findGoodsVo());
         return "goodsList";
+    }
+
+    /**
+     * 功能描述: 跳转商品详情页
+     *
+     * @param user
+     * @param goodsId
+     * @return
+     */
+    @RequestMapping("/toDetail/{goodsId}")
+    public String toDetail(Model model, User user, @PathVariable Long goodsId) {
+
+        model.addAttribute("user", user);
+        model.addAttribute("goods", goodsService.findGoodsVoByGoodsId(goodsId));
+        return "goodsDetail";
     }
 }
 
