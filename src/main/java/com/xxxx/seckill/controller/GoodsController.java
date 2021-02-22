@@ -32,6 +32,9 @@ public class GoodsController {
 
     /**
      * 功能描述: 跳转商品列表页
+     *
+     * Windows优化前 QPS：1359
+     * Linux优化前 QPS：128
      */
     @RequestMapping(value = "/toList")
     public String toList(Model model, User user) {
