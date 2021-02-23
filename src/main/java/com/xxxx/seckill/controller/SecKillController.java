@@ -38,6 +38,8 @@ public class SecKillController {
 
     /**
      * 功能描述：秒杀
+     * Windows优化前QPS：208
+     * Linux优化前QPS：83
      *
      * @param model
      * @param user
