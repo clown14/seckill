@@ -18,10 +18,19 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface IUserService extends IService<User> {
 
+    /**
+     * 功能描述: 登录
+     */
     RespBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response);
 
     /**
      * 功能描述: 根据cookie获取用户
      */
     User getUserByCookie(String userTicket, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 功能描述: 更新密码
+     */
+    RespBean updatePassword(String userTicket, String password, HttpServletRequest request,
+                            HttpServletResponse response);
 }

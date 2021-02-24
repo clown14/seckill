@@ -47,6 +47,7 @@ public class GoodsController {
      * 功能描述: 跳转商品列表页
      * <p>
      * Windows优化前 QPS：1359
+     *        缓存 QPS：2143
      * Linux优化前 QPS：128
      */
     @RequestMapping(value = "/toList", produces = "text/html;charset=utf-8")
@@ -61,7 +62,7 @@ public class GoodsController {
         }
         model.addAttribute("user", user);
         model.addAttribute("goodsList", goodsService.findGoodsVo());
-        // return "goodsList";
+//         return "goodsList";
         //如果为空，手动渲染，存入Redis并返回
         WebContext context = new WebContext(request, response, request.getServletContext(), request.getLocale(),
                 model.asMap());
@@ -70,6 +71,10 @@ public class GoodsController {
             valueOperations.set("goodsList", html, 60, TimeUnit.SECONDS);
         }
         return html;
+
+//        model.addAttribute("user", user);
+//        model.addAttribute("goodsList", goodsService.findGoodsVo());
+//        return "goodsList";
     }
 
     /**

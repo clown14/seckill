@@ -6,7 +6,6 @@ import lombok.ToString;
 
 /**
  * 公共返回对象枚举
- * 乐字节：专注线上IT培训
  */
 @Getter
 @ToString
