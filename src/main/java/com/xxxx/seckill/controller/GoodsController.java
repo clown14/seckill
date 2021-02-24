@@ -3,12 +3,15 @@ package com.xxxx.seckill.controller;
 import com.xxxx.seckill.pojo.User;
 import com.xxxx.seckill.service.IGoodsService;
 import com.xxxx.seckill.service.IUserService;
+import com.xxxx.seckill.vo.DetailVo;
 import com.xxxx.seckill.vo.GoodsVo;
+import com.xxxx.seckill.vo.RespBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +50,7 @@ public class GoodsController {
      * 功能描述: 跳转商品列表页
      * <p>
      * Windows优化前 QPS：1359
-     *        缓存 QPS：2143
+     * 缓存 QPS：2143
      * Linux优化前 QPS：128
      */
     @RequestMapping(value = "/toList", produces = "text/html;charset=utf-8")
@@ -57,12 +60,12 @@ public class GoodsController {
         //Redis中获取页面，如果不为空，直接返回页面
         ValueOperations valueOperations = redisTemplate.opsForValue();
         String html = (String) valueOperations.get("goodsList");
-        if (!StringUtils.isEmpty(html)) {
+        if (!ObjectUtils.isEmpty(html)) {
             return html;
         }
         model.addAttribute("user", user);
         model.addAttribute("goodsList", goodsService.findGoodsVo());
-//         return "goodsList";
+        // return "goodsList";
         //如果为空，手动渲染，存入Redis并返回
         WebContext context = new WebContext(request, response, request.getServletContext(), request.getLocale(),
                 model.asMap());
@@ -131,10 +134,9 @@ public class GoodsController {
      * @param goodsId
      * @return
      */
-    @RequestMapping("/Detail/{goodsId}")
-    public String toDetail(Model model, User user, @PathVariable Long goodsId) {
-
-        model.addAttribute("user", user);
+    @RequestMapping("/detail/{goodsId}")
+    @ResponseBody
+    public RespBean toDetail(User user, @PathVariable Long goodsId) {
         GoodsVo goodsVo = goodsService.findGoodsVoByGoodsId(goodsId);
         Date startDate = goodsVo.getStartDate();
         Date endDate = goodsVo.getEndDate();
@@ -155,10 +157,12 @@ public class GoodsController {
             secKillStatus = 1;
             remainSeconds = 0;
         }
-        model.addAttribute("goods", goodsVo);
-        model.addAttribute("secKillStatus", secKillStatus);
-        model.addAttribute("remainSeconds", remainSeconds);
-        return "goodsDetail";
+        DetailVo detailVo = new DetailVo();
+        detailVo.setUser(user);
+        detailVo.setGoodsVo(goodsVo);
+        detailVo.setSecKillStatus(secKillStatus);
+        detailVo.setRemainSeconds(remainSeconds);
+        return RespBean.success(detailVo);
     }
 }
 
